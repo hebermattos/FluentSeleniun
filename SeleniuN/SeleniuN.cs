@@ -48,11 +48,10 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
             GetById(id).Click();         
         }
 
-        public void FillByName(string nomeelement, string valorCampo)
+        public void FillByName(string name, string value)
         {
-            var element = GetByName(nomeelement);
+            var element = GetByName(name);
             element.Clear();
-            element.SendKeys(valorCampo);
         }
 
         public void FillById(string id, string value)
