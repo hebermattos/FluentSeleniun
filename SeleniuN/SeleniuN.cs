@@ -48,7 +48,7 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
             GetById(id).Click();         
         }
 
-        public void PreencherCampoPorNome(string nomeelement, string valorCampo)
+        public void FillByName(string nomeelement, string valorCampo)
         {
             var element = GetByName(nomeelement);
             element.Clear();
@@ -121,7 +121,7 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
             }
         }
 
-        public void SalvarPrint(Exception erro)
+        public void SavePrint(Exception erro)
         {
             Directory.CreateDirectory(_snapShotPath);
 
@@ -135,7 +135,6 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
         {
             _browser.Quit();
         }
-
 
         public void OpenUrl(string url)
         {
