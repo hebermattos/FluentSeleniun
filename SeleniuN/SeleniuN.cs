@@ -4,15 +4,15 @@ using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
+namespace Seleniun
 {
-    public class SeleniuN
+    public class Seleniun
     {
         private readonly IWebDriver _browser;
         private readonly WebDriverWait _wait;
         private readonly string _snapShotPath;
 
-        public SeleniuN(IWebDriver webDriver, string snapShotPath, int waitSeconds = 5)
+        public Seleniun(IWebDriver webDriver, string snapShotPath, int waitSeconds = 5)
         {
             _browser = webDriver;
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
@@ -22,7 +22,7 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
         public IWebElement GetByName(string name)
         {
             _wait.Until(ExpectedConditions.ElementExists(By.Name(name)));
-            return _browser.FindElement(By.Name(name));       
+            return _browser.FindElement(By.Name(name));
         }
 
         public IWebElement GetById(string id)
@@ -35,17 +35,17 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
         {
             _wait.Until(AlertExists);
 
-            _browser.SwitchTo().Alert().Accept();         
+            _browser.SwitchTo().Alert().Accept();
         }
 
         public void ClickButtonByName(string name)
         {
-            GetByName(name).Click();           
+            GetByName(name).Click();
         }
 
         public void ClickButtonById(string id)
         {
-            GetById(id).Click();         
+            GetById(id).Click();
         }
 
         public void FillByName(string name, string value)
@@ -65,13 +65,13 @@ namespace RedeHost.Comando.UI.Web.Teste.Auxiliares
         {
             var element = GetByName(name);
 
-            new SelectElement(element).SelectByText(value);   
+            new SelectElement(element).SelectByText(value);
         }
 
         public void SelectDdlById(string id, string value)
         {
             var element = GetById(id);
-            new SelectElement(element).SelectByText(value);          
+            new SelectElement(element).SelectByText(value);
         }
 
         public void WaitByName(string name)
