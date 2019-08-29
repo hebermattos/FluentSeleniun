@@ -1,6 +1,6 @@
 ﻿namespace SeleniuN
 {
-    public enum SeleniumBrowser
+    public enum SeleniumBrowserType
     {
         Chrome,
         Firefox,

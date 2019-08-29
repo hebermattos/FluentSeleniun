@@ -8,15 +8,15 @@ namespace SeleniuN
 {
     public static class SeleniumBrowserFactory
     {
-        public static IWebDriver Get(SeleniumBrowser browser)
+        public static IWebDriver Get(SeleniumBrowserType browser)
         {
             switch (browser)
             {
-                case SeleniumBrowser.Chrome:
+                case SeleniumBrowserType.Chrome:
                     return new ChromeDriver();
-                case SeleniumBrowser.Firefox:
+                case SeleniumBrowserType.Firefox:
                     return new FirefoxDriver();
-                case SeleniumBrowser.InternetExplorer:
+                case SeleniumBrowserType.InternetExplorer:
                     return new InternetExplorerDriver();
                 default:
                     throw new ArgumentException(browser.ToString());

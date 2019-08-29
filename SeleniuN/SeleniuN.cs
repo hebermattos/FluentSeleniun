@@ -20,7 +20,7 @@ namespace Seleniun
             _snapShotPath = snapShotPath;
         }
 
-        public Seleniun(SeleniumBrowser browserType, string snapShotPath, int waitSeconds = 5)
+        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, int waitSeconds = 5)
         {
             _browser = SeleniumBrowserFactory.Get(browserType);
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
