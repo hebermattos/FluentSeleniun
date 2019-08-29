@@ -137,11 +137,11 @@ namespace Seleniun
             }
         }
 
-        public bool AlertExists()
+        private bool AlertExists(IWebDriver browser)
         {
             try
             {
-                return _browser.SwitchTo().Alert() != null;
+                return browser.SwitchTo().Alert() != null;
             }
             catch (NoAlertPresentException)
             {
