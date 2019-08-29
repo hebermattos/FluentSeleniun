@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeleniumBrowserFactory.cs" />
+    <Compile Include="SeleniumBrowser.cs" />
     <Compile Include="SeleniuN.cs" />
   </ItemGroup>
   <ItemGroup>
