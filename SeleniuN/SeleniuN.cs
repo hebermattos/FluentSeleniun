@@ -27,108 +27,105 @@ namespace Seleniun
             _snapShotPath = snapShotPath;
         }
 
-        public IWebElement GetByName(string name)
-        {
-            _wait.Until(ExpectedConditions.ElementExists(By.Name(name)));
-            return _browser.FindElement(By.Name(name));
-        }
-
-        public IWebElement GetById(string id)
-        {
-            _wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
-            return _browser.FindElement(By.Id(id));
-        }
-
-        public IWebElement GetByXPath(string xpath)
-        {
-            _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
-            return _browser.FindElement(By.XPath(xpath));
-        }
-
-        public void AlertClick()
+        public Seleniun AlertClick()
         {
             _wait.Until(AlertExists);
-
             _browser.SwitchTo().Alert().Accept();
+
+            return this;
         }
 
-        public void ClickButtonByName(string name)
+        public Seleniun ClickButtonByName(string name)
         {
             GetByName(name).Click();
+
+            return this;
         }
 
-        public void ClickButtonById(string id)
+        public Seleniun ClickButtonById(string id)
         {
             GetById(id).Click();
+
+            return this;
         }
 
-        public void ClickButtonByXPath(string xpath)
+        public Seleniun ClickButtonByXPath(string xpath)
         {
             GetByXPath(xpath).Click();
+
+            return this;
         }
 
-        public void FillByName(string name, string value)
+        public Seleniun FillByName(string name, string value)
         {
             var element = GetByName(name);
             element.Clear();
             element.SendKeys(value);
+
+            return this;
         }
 
-        public void FillById(string id, string value)
+        public Seleniun FillById(string id, string value)
         {
             var element = GetById(id);
             element.Clear();
             element.SendKeys(value);
+
+            return this;
         }
 
-        public void FillByXPath(string xpath, string value)
+        public Seleniun FillByXPath(string xpath, string value)
         {
             var element = GetByXPath(xpath);
             element.Clear();
             element.SendKeys(value);
+
+            return this;
         }
 
-        public void SelectDdlByName(string name, string value)
+        public Seleniun SelectDdlByName(string name, string value)
         {
             var element = GetByName(name);
             new SelectElement(element).SelectByText(value);
+
+            return this;
         }
 
-        public void SelectDdlById(string id, string value)
+        public Seleniun SelectDdlById(string id, string value)
         {
             var element = GetById(id);
             new SelectElement(element).SelectByText(value);
+
+            return this;
         }
 
-        public void SelectDdlByXPath(string xpath, string value)
+        public Seleniun SelectDdlByXPath(string xpath, string value)
         {
             var element = GetByXPath(xpath);
             new SelectElement(element).SelectByText(value);
+
+            return this;
         }
 
-        public void WaitByName(string name)
-        {
-            _wait.Until(ExpectedConditions.ElementExists(By.Name(name)));
-        }
-
-        public void WaitById(string id)
+        public Seleniun WaitById(string id)
         {
             _wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
+
+            return this;
         }
 
-        public void WaitByXPath(string xpath)
+        public Seleniun WaitByXPath(string xpath)
         {
             _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
+
+            return this;
         }
 
-        public void Wait(int milliseconds = 1000)
+        public Seleniun Wait(int milliseconds = 1000)
         {
             System.Threading.Thread.Sleep(milliseconds);
-        }
 
-        public bool WaitAlert()
-        {
-            return _wait.Until(AlertExists);
+            return this;
         }
 
         public IAlert GetAlert()
@@ -145,6 +142,48 @@ namespace Seleniun
             }
         }
 
+        public void SavePrint(Exception erro)
+        {
+            Directory.CreateDirectory(_snapShotPath);
+
+            var screnn = (ITakesScreenshot)_browser;
+
+            Screenshot print = screnn.GetScreenshot();
+            print.SaveAsFile(_snapShotPath + erro.Message.Replace(" ", "_") + ".png", ScreenshotImageFormat.Png);
+        }
+
+        public Seleniun CloseBrowser()
+        {
+            _browser.Quit();
+
+            return this;
+        }
+
+        public Seleniun OpenUrl(string url)
+        {
+            _browser.Navigate().GoToUrl(url);
+
+            return this;
+        }
+
+        private IWebElement GetByName(string name)
+        {
+            _wait.Until(ExpectedConditions.ElementExists(By.Name(name)));
+            return _browser.FindElement(By.Name(name));
+        }
+
+        private IWebElement GetById(string id)
+        {
+            _wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
+            return _browser.FindElement(By.Id(id));
+        }
+
+        private IWebElement GetByXPath(string xpath)
+        {
+            _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
+            return _browser.FindElement(By.XPath(xpath));
+        }
+
         private bool AlertExists(IWebDriver browser)
         {
             try
@@ -156,26 +195,5 @@ namespace Seleniun
                 return false;
             }
         }
-
-        public void SavePrint(Exception erro)
-        {
-            Directory.CreateDirectory(_snapShotPath);
-
-            var screnn = (ITakesScreenshot)_browser;
-
-            Screenshot print = screnn.GetScreenshot();
-            print.SaveAsFile(_snapShotPath + erro.Message.Replace(" ", "_") + ".png", ScreenshotImageFormat.Png);
-        }
-
-        public void CloseBrowser()
-        {
-            _browser.Quit();
-        }
-
-        public void OpenUrl(string url)
-        {
-            _browser.Navigate().GoToUrl(url);
-        }
-
     }
 }
