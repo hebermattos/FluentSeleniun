@@ -27,7 +27,7 @@ namespace Seleniun
             _snapShotPath = snapShotPath;
         }
 
-        public Seleniun AlertClick()
+        public Seleniun ClickAlert()
         {
             _wait.Until(AlertExists);
             _browser.SwitchTo().Alert().Accept();
@@ -103,27 +103,6 @@ namespace Seleniun
         {
             var element = GetByXPath(xpath);
             new SelectElement(element).SelectByText(value);
-
-            return this;
-        }
-
-        public Seleniun WaitById(string id)
-        {
-            _wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
-
-            return this;
-        }
-
-        public Seleniun WaitByXPath(string xpath)
-        {
-            _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
-
-            return this;
-        }
-
-        public Seleniun Wait(int milliseconds = 1000)
-        {
-            System.Threading.Thread.Sleep(milliseconds);
 
             return this;
         }
