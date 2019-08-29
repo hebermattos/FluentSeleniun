@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Drawing.Imaging;
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace Seleniun
 {
@@ -31,6 +31,12 @@ namespace Seleniun
             return _browser.FindElement(By.Id(id));
         }
 
+        public IWebElement GetByXPath(string xpath)
+        {
+            _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
+            return _browser.FindElement(By.XPath(xpath));
+        }
+
         public void AlertClick()
         {
             _wait.Until(AlertExists);
@@ -48,10 +54,16 @@ namespace Seleniun
             GetById(id).Click();
         }
 
+        public void ClickButtonByXPath(string xpath)
+        {
+            GetByXPath(xpath).Click();
+        }
+
         public void FillByName(string name, string value)
         {
             var element = GetByName(name);
             element.Clear();
+            element.SendKeys(value);
         }
 
         public void FillById(string id, string value)
@@ -61,16 +73,28 @@ namespace Seleniun
             element.SendKeys(value);
         }
 
+        public void FillByXPath(string xpath, string value)
+        {
+            var element = GetByXPath(xpath);
+            element.Clear();
+            element.SendKeys(value);
+        }
+
         public void SelectDdlByName(string name, string value)
         {
             var element = GetByName(name);
-
             new SelectElement(element).SelectByText(value);
         }
 
         public void SelectDdlById(string id, string value)
         {
             var element = GetById(id);
+            new SelectElement(element).SelectByText(value);
+        }
+
+        public void SelectDdlByXPath(string xpath, string value)
+        {
+            var element = GetByXPath(xpath);
             new SelectElement(element).SelectByText(value);
         }
 
@@ -82,6 +106,11 @@ namespace Seleniun
         public void WaitById(string id)
         {
             _wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
+        }
+
+        public void WaitByXPath(string xpath)
+        {
+            _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
         }
 
         public void Wait(int milliseconds = 1000)
@@ -108,11 +137,11 @@ namespace Seleniun
             }
         }
 
-        public bool AlertExists(IWebDriver browser)
+        public bool AlertExists()
         {
             try
             {
-                return browser.SwitchTo().Alert() != null;
+                return _browser.SwitchTo().Alert() != null;
             }
             catch (NoAlertPresentException)
             {
@@ -124,13 +153,13 @@ namespace Seleniun
         {
             Directory.CreateDirectory(_snapShotPath);
 
-            var tela = (ITakesScreenshot)_browser;
+            var screnn = (ITakesScreenshot)_browser;
 
-            Screenshot print = tela.GetScreenshot();
-            print.SaveAsFile(_snapShotPath + erro.Message.Replace(" ", "_") + ".png", ImageFormat.Png);
+            Screenshot print = screnn.GetScreenshot();
+            print.SaveAsFile(_snapShotPath + erro.Message.Replace(" ", "_") + ".png", ScreenshotImageFormat.Png);
         }
 
-        public void Close()
+        public void CloseBrowser()
         {
             _browser.Quit();
         }
