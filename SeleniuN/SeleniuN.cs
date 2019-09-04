@@ -13,18 +13,20 @@ namespace Seleniun
         private readonly WebDriverWait _wait;
         private readonly string _snapShotPath;
 
-        public Seleniun(IWebDriver webDriver, string snapShotPath, int waitSeconds = 5)
+        private Seleniun(string snapShotPath, int waitSeconds = 5)
         {
-            _browser = webDriver;
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
             _snapShotPath = snapShotPath;
         }
 
-        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, int waitSeconds = 5)
+        public Seleniun(IWebDriver webDriver, string snapShotPath, int waitSeconds = 5): this(snapShotPath, waitSeconds)
+        {
+            _browser = webDriver;
+        }
+
+        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, int waitSeconds = 5) : this(snapShotPath, waitSeconds)
         {
             _browser = SeleniumBrowserFactory.Get(browserType);
-            _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
-            _snapShotPath = snapShotPath;
         }
 
         public Seleniun ClickAlert()
@@ -107,30 +109,6 @@ namespace Seleniun
             return this;
         }
 
-        public IAlert GetAlert()
-        {
-            try
-            {
-                _wait.Until(AlertExists);
-
-                return _browser.SwitchTo().Alert();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public void SavePrint(Exception erro)
-        {
-            Directory.CreateDirectory(_snapShotPath);
-
-            var screnn = (ITakesScreenshot)_browser;
-
-            Screenshot print = screnn.GetScreenshot();
-            print.SaveAsFile(_snapShotPath + erro.Message.Replace(" ", "_") + ".png", ScreenshotImageFormat.Png);
-        }
-
         public Seleniun CloseBrowser()
         {
             _browser.Quit();
@@ -143,6 +121,16 @@ namespace Seleniun
             _browser.Navigate().GoToUrl(url);
 
             return this;
+        }
+
+        public void SavePrint(Exception erro)
+        {
+            Directory.CreateDirectory(_snapShotPath);
+
+            var screnn = (ITakesScreenshot)_browser;
+
+            Screenshot print = screnn.GetScreenshot();
+            print.SaveAsFile(_snapShotPath + erro.Message.Replace(" ", "_") + ".png", ScreenshotImageFormat.Png);
         }
 
         private IWebElement GetByName(string name)
