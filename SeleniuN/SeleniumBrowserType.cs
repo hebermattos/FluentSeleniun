@@ -1,4 +1,4 @@
-﻿namespace SeleniuN
+﻿namespace Seleniun
 {
     public enum SeleniumBrowserType
     {
