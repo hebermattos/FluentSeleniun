@@ -2,7 +2,6 @@
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Seleniun;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace Seleniun
@@ -18,16 +17,16 @@ namespace Seleniun
             _snapShotPath = snapShotPath;
         }
 
-        public Seleniun(IWebDriver webDriver, string snapShotPath, int waitSeconds = 5): this(snapShotPath)
+        public Seleniun(IWebDriver webDriver, string snapShotPath, int maxWaitSeconds): this(snapShotPath)
         {
             _browser = webDriver;
-            _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
+            _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
         }
 
-        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int waitSeconds = 5) : this(snapShotPath)
+        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int maxWaitSeconds) : this(snapShotPath)
         {
             _browser = SeleniumBrowserFactory.Get(browserType, driverFolderPath);
-            _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
+            _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
         }
 
         public Seleniun OpenUrl(string url)

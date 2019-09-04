@@ -7,7 +7,11 @@ namespace Seleniun.Example
     {
         static void Main()
         {
-            var seleniun = new Seleniun(SeleniumBrowserType.Firefox, "c:\\Temp\\", Directory.GetCurrentDirectory(), 10);
+            var seleniun = new Seleniun(
+                  browserType: SeleniumBrowserType.Firefox,
+                  snapShotPath: "c:\\Selenium_SnapShots\\",
+                  driverFolderPath: Directory.GetCurrentDirectory(),
+                  maxWaitSeconds: 10);
 
             try
             {
