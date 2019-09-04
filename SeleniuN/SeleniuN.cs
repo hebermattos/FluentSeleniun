@@ -29,6 +29,13 @@ namespace Seleniun
             _browser = SeleniumBrowserFactory.Get(browserType);
         }
 
+        public Seleniun OpenUrl(string url)
+        {
+            _browser.Navigate().GoToUrl(url);
+
+            return this;
+        }
+
         public Seleniun ClickAlert()
         {
             _wait.Until(AlertExists);
@@ -112,13 +119,6 @@ namespace Seleniun
         public Seleniun CloseBrowser()
         {
             _browser.Quit();
-
-            return this;
-        }
-
-        public Seleniun OpenUrl(string url)
-        {
-            _browser.Navigate().GoToUrl(url);
 
             return this;
         }
