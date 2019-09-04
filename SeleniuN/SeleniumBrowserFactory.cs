@@ -9,18 +9,16 @@ namespace Seleniun
 {
     public static class SeleniumBrowserFactory
     {
-        public static IWebDriver Get(SeleniumBrowserType browser)
-        {
-            var directory = Directory.GetCurrentDirectory();
-
+        public static IWebDriver Get(SeleniumBrowserType browser, string driverFolderPath)
+        {           
             switch (browser)
             {
                 case SeleniumBrowserType.Chrome:
-                    return new ChromeDriver(directory);
+                    return new ChromeDriver(driverFolderPath);
                 case SeleniumBrowserType.Firefox:
-                    return new FirefoxDriver(directory);
+                    return new FirefoxDriver(driverFolderPath);
                 case SeleniumBrowserType.InternetExplorer:
-                    return new InternetExplorerDriver(directory);
+                    return new InternetExplorerDriver(driverFolderPath);
                 default:
                     throw new ArgumentException(browser.ToString());
             }

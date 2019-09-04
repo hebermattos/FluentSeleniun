@@ -13,7 +13,7 @@ namespace Seleniun
         private readonly WebDriverWait _wait;
         private readonly string _snapShotPath;
 
-        private Seleniun(string snapShotPath, int waitSeconds = 5)
+        private Seleniun(string snapShotPath)
         {            
             _snapShotPath = snapShotPath;
         }
@@ -24,9 +24,9 @@ namespace Seleniun
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
         }
 
-        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, int waitSeconds = 5) : this(snapShotPath)
+        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int waitSeconds = 5) : this(snapShotPath)
         {
-            _browser = SeleniumBrowserFactory.Get(browserType);
+            _browser = SeleniumBrowserFactory.Get(browserType, driverFolderPath);
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(waitSeconds));
         }
 
