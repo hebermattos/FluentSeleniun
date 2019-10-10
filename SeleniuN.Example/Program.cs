@@ -18,7 +18,7 @@ namespace Seleniun.Example
                 seleniun
                     .OpenUrl("https://www.google.com/")
                     .FillByName("q", "devops")
-                    .ClickButtonByName("btnK123");
+                    .ClickButtonByName("btnK123"); //wrong button name
             }
             catch (Exception ex)
             {
@@ -28,7 +28,6 @@ namespace Seleniun.Example
             {
                 seleniun.CloseBrowser();
             }
-
         }
     }
 }
