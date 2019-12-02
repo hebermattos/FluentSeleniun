@@ -1,10 +1,9 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System;
 
-namespace Seleniun
+namespace OpenQA.Selenium
 {
     public static class SeleniumBrowserFactory
     {

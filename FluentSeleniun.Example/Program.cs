@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using OpenQA.Selenium;
 
 namespace Seleniun.Example
 {
@@ -7,7 +8,7 @@ namespace Seleniun.Example
     {
         static void Main()
         {
-            var seleniun = new Seleniun(
+            var seleniun = new FluentSeleniun(
                   browserType: SeleniumBrowserType.Firefox,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),

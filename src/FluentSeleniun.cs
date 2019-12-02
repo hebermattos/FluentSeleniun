@@ -1,42 +1,41 @@
 ﻿using System;
 using System.IO;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace Seleniun
+namespace OpenQA.Selenium
 {
-    public class Seleniun
+    public class FluentSeleniun
     {
         private readonly IWebDriver _browser;
         private readonly WebDriverWait _wait;
         private readonly string _snapShotPath;
 
-        private Seleniun(string snapShotPath)
+        private FluentSeleniun(string snapShotPath)
         {            
             _snapShotPath = snapShotPath;
         }
 
-        public Seleniun(IWebDriver webDriver, string snapShotPath, int maxWaitSeconds): this(snapShotPath)
+        public FluentSeleniun(IWebDriver webDriver, string snapShotPath, int maxWaitSeconds): this(snapShotPath)
         {
             _browser = webDriver;
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
         }
 
-        public Seleniun(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int maxWaitSeconds) : this(snapShotPath)
+        public FluentSeleniun(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int maxWaitSeconds) : this(snapShotPath)
         {
             _browser = SeleniumBrowserFactory.Get(browserType, driverFolderPath);
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
         }
 
-        public Seleniun OpenUrl(string url)
+        public FluentSeleniun OpenUrl(string url)
         {
             _browser.Navigate().GoToUrl(url);
 
             return this;
         }
 
-        public Seleniun ClickAlert()
+        public FluentSeleniun ClickAlert()
         {
             _wait.Until(AlertExists);
             _browser.SwitchTo().Alert().Accept();
@@ -44,28 +43,28 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun ClickButtonByName(string name)
+        public FluentSeleniun ClickButtonByName(string name)
         {
             GetByName(name).Click();
 
             return this;
         }
 
-        public Seleniun ClickButtonById(string id)
+        public FluentSeleniun ClickButtonById(string id)
         {
             GetById(id).Click();
 
             return this;
         }
 
-        public Seleniun ClickButtonByXPath(string xpath)
+        public FluentSeleniun ClickButtonByXPath(string xpath)
         {
             GetByXPath(xpath).Click();
 
             return this;
         }
 
-        public Seleniun FillByName(string name, string value)
+        public FluentSeleniun FillByName(string name, string value)
         {
             var element = GetByName(name);
             element.Clear();
@@ -74,7 +73,7 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun FillById(string id, string value)
+        public FluentSeleniun FillById(string id, string value)
         {
             var element = GetById(id);
             element.Clear();
@@ -83,7 +82,7 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun FillByXPath(string xpath, string value)
+        public FluentSeleniun FillByXPath(string xpath, string value)
         {
             var element = GetByXPath(xpath);
             element.Clear();
@@ -92,7 +91,7 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun SelectDdlByName(string name, string value)
+        public FluentSeleniun SelectDdlByName(string name, string value)
         {
             var element = GetByName(name);
             new SelectElement(element).SelectByText(value);
@@ -100,7 +99,7 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun SelectDdlById(string id, string value)
+        public FluentSeleniun SelectDdlById(string id, string value)
         {
             var element = GetById(id);
             new SelectElement(element).SelectByText(value);
@@ -108,7 +107,7 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun SelectDdlByXPath(string xpath, string value)
+        public FluentSeleniun SelectDdlByXPath(string xpath, string value)
         {
             var element = GetByXPath(xpath);
             new SelectElement(element).SelectByText(value);
@@ -116,7 +115,7 @@ namespace Seleniun
             return this;
         }
 
-        public Seleniun CloseBrowser()
+        public FluentSeleniun CloseBrowser()
         {
             _browser.Quit();
 

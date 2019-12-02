@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniuN", "SeleniuN\SeleniuN.csproj", "{B2022A26-49C0-45DB-9F69-A545E21DC3D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src", "src\src.csproj", "{7F4A55BB-2E77-4A91-B8F4-A636FD192A24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniuN.Example", "SeleniuN.Example\SeleniuN.Example.csproj", "{FB2B28D2-1684-4788-A9B3-6E5301D44F85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentSeleniun.Example", "FluentSeleniun.Example\FluentSeleniun.Example.csproj", "{9A17EDF7-037F-402D-A8B5-86DFB84446BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +21,14 @@ Global
 		{FB2B28D2-1684-4788-A9B3-6E5301D44F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB2B28D2-1684-4788-A9B3-6E5301D44F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB2B28D2-1684-4788-A9B3-6E5301D44F85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4A55BB-2E77-4A91-B8F4-A636FD192A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4A55BB-2E77-4A91-B8F4-A636FD192A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4A55BB-2E77-4A91-B8F4-A636FD192A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4A55BB-2E77-4A91-B8F4-A636FD192A24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

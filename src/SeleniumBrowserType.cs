@@ -1,4 +1,4 @@
-﻿namespace Seleniun
+﻿namespace OpenQA.Selenium
 {
     public enum SeleniumBrowserType
     {
