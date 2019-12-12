@@ -1,7 +1,7 @@
 # seleniun
 simple selenium wrapper
 
-var seleniun = new FluentSeleniun(
+            var seleniun = new FluentSeleniun(
                   browserType: SeleniumBrowserType.Firefox,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
