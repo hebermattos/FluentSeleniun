@@ -12,11 +12,11 @@ namespace OpenQA.Selenium
         private readonly string _snapShotPath;
 
         private FluentSeleniun(string snapShotPath)
-        {            
+        {
             _snapShotPath = snapShotPath;
         }
 
-        public FluentSeleniun(IWebDriver webDriver, string snapShotPath, int maxWaitSeconds): this(snapShotPath)
+        public FluentSeleniun(IWebDriver webDriver, string snapShotPath, int maxWaitSeconds) : this(snapShotPath)
         {
             _browser = webDriver;
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
@@ -35,13 +35,29 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public FluentSeleniun HasTitle(string pageTitle, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        public FluentSeleniun PageTitleShoulBe(string text, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
-            _browser.Title.Equals(pageTitle, stringComparison);
+            if (!_browser.Title.Equals(text, stringComparison))
+                throw new Exception($"Page title should be {text}");
 
             return this;
         }
 
+        public FluentSeleniun PageTitleShoulContains(string text)
+        {
+            if (!_browser.Title.Contains(text))
+                throw new Exception($"Page title should contains {text}");
+
+            return this;
+        }
+
+        public FluentSeleniun PageShoulContains(string text)
+        {
+            if (!_browser.PageSource.Contains(text))
+                throw new Exception($"Page should contains {text}");
+
+            return this;
+        }
 
         public FluentSeleniun ClickAlert()
         {

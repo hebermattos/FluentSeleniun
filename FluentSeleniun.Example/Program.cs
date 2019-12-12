@@ -12,14 +12,16 @@ namespace Seleniun.Example
                   browserType: SeleniumBrowserType.Firefox,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
-                  maxWaitSeconds: 10);
+                  maxWaitSeconds: 3);
 
             try
             {
                 seleniun
                     .OpenUrl("https://www.google.com/")
+                    .PageTitleShoulBe("Google")
                     .FillByName("q", "devops")
-                    .ClickButtonByName("btnK123"); //wrong button name
+                    .ClickButtonByName("btnK")
+                    .PageTitleShoulContains("devops"); 
             }
             catch (Exception ex)
             {
