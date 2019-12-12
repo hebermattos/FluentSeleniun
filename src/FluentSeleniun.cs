@@ -52,7 +52,7 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public FluentSeleniun PageShoulContains(string text)
+        public FluentSeleniun PageShouldContains(string text)
         {
             if (!_browser.PageSource.Contains(text))
                 throw new Exception($"Page should contains {text}");
