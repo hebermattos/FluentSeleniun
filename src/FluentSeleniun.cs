@@ -35,6 +35,14 @@ namespace OpenQA.Selenium
             return this;
         }
 
+        public FluentSeleniun HasTitle(string pageTitle, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        {
+            _browser.Title.Equals(pageTitle, stringComparison);
+
+            return this;
+        }
+
+
         public FluentSeleniun ClickAlert()
         {
             _wait.Until(AlertExists);
