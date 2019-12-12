@@ -20,6 +20,7 @@ namespace OpenQA.Selenium
         {
             _browser = webDriver;
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
+            _wait.PollingInterval = TimeSpan.FromMilliseconds(100);
         }
 
         public FluentSeleniun(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int maxWaitSeconds) : this(snapShotPath)

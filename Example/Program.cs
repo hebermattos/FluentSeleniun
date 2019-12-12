@@ -12,7 +12,7 @@ namespace Seleniun.Example
                   browserType: SeleniumBrowserType.Firefox,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
-                  maxWaitSeconds: 3);
+                  maxWaitSeconds: 300);
 
             try
             {
