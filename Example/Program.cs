@@ -14,7 +14,6 @@ namespace Seleniun.Example
                   driverFolderPath: Directory.GetCurrentDirectory(),
                   maxWaitSeconds: 3);
 
-
             seleniun
                 .OpenUrl("https://www.google.com/")
                 .PageTitleShoulBe("Google")
