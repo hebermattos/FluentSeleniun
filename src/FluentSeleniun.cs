@@ -33,7 +33,7 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public FluentSeleniun PageTitleShoulBe(string text, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        public FluentSeleniun PageTitleShouldBe(string text, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
             _methods.Add(() =>
             {
@@ -44,7 +44,7 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public FluentSeleniun PageTitleShoulContains(string text)
+        public FluentSeleniun PageTitleShouldContains(string text)
         {
             _methods.Add(() =>
             {
@@ -175,7 +175,6 @@ namespace OpenQA.Selenium
 
             return this;
         }
-
 
         public void Run()
         {
