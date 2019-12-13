@@ -4,8 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src", "src\src.csproj", "{7F4A55BB-2E77-4A91-B8F4-A636FD192A24}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "example", "example\example.csproj", "{9A17EDF7-037F-402D-A8B5-86DFB84446BF}"
+EndProjectt
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "example.xunit", "example.xunit\example.xunit.csproj", "{0774E33B-B85D-497C-AE27-6B75C163AE05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +29,10 @@ Global
 		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A17EDF7-037F-402D-A8B5-86DFB84446BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0774E33B-B85D-497C-AE27-6B75C163AE05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0774E33B-B85D-497C-AE27-6B75C163AE05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0774E33B-B85D-497C-AE27-6B75C163AE05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0774E33B-B85D-497C-AE27-6B75C163AE05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

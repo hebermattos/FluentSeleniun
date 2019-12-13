@@ -7,7 +7,7 @@ namespace Seleniun.Example
     {
         static void Main()
         {
-            var seleniun = new FluentSeleniun(
+            var seleniun = new FluentSelenium(
                   browserType: SeleniumBrowserType.Chrome,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
