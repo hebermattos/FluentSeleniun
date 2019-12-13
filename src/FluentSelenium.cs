@@ -140,12 +140,6 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        private static void SendKeys(string value, IWebElement element)
-        {
-            element.Clear();
-            element.SendKeys(value);
-        }
-
         public FluentSelenium SelectDdlByName(string name, string value)
         {
             _methods.Add(() =>
@@ -183,8 +177,8 @@ namespace OpenQA.Selenium
         {
             try
             {
-                foreach (var method in _methods)                
-                    method.Invoke();                
+                foreach (var method in _methods)
+                    method.Invoke();
             }
             catch (Exception ex)
             {
@@ -196,6 +190,8 @@ namespace OpenQA.Selenium
             }
         }
 
+        #region Private
+
         private void SavePrint(Exception erro)
         {
             Directory.CreateDirectory(_snapShotPath);
@@ -206,9 +202,16 @@ namespace OpenQA.Selenium
             print.SaveAsFile(_snapShotPath + RemoveSpecialCharacters(erro.Message.Replace(" ", "_")) + ".png", ScreenshotImageFormat.Png);
         }
 
+        private static void SendKeys(string value, IWebElement element)
+        {
+            element.Clear();
+            element.SendKeys(value);
+        }
+
         private static string RemoveSpecialCharacters(string str)
         {
             var sb = new StringBuilder();
+
             foreach (char c in str)
                 if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
                     sb.Append(c);
@@ -251,5 +254,6 @@ namespace OpenQA.Selenium
             _browser.Quit();
         }
 
+        #endregion 
     }
 }
