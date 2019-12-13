@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/FluentSeleniun.Example/bin/Debug/netcoreapp2.2/FluentSeleniun.Example.dll",
+            "program": "${workspaceFolder}/example/bin/Debug/netcoreapp2.2/example.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/FluentSeleniun.Example",
+            "cwd": "${workspaceFolder}/example",
             "console": "internalConsole",
             "stopAtEntry": false
         },

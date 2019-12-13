@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/FluentSeleniun.Example/FluentSeleniun.Example.csproj",
+                "${workspaceFolder}/example/example.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/FluentSeleniun.Example/FluentSeleniun.Example.csproj",
+                "${workspaceFolder}/example/example.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/FluentSeleniun.Example/FluentSeleniun.Example.csproj",
+                "${workspaceFolder}/example/example.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
