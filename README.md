@@ -9,8 +9,8 @@ simple selenium wrapper
 
             seleniun
                 .OpenUrl("https://www.google.com/")
-                .PageTitleShoulBe("Google")
+                .PageTitleShouldBe("Google")
                 .FillByName("q", "devops")
                 .ClickButtonByName("btnK")
-                .PageTitleShoulContains("devops")
+                .PageTitleShouldContains("devops")
                 .Run();
