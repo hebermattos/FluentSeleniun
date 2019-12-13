@@ -173,16 +173,20 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public void Run()
+        public bool Run()
         {
             try
             {
                 foreach (var method in _methods)
                     method.Invoke();
+                
+                return true;
             }
             catch (Exception ex)
             {
                 SavePrint(ex);
+
+                return false;
             }
             finally
             {
@@ -221,19 +225,19 @@ namespace OpenQA.Selenium
 
         private IWebElement GetByName(string name)
         {
-            _wait.Until(ExpectedConditions.ElementExists(By.Name(name)));
+            _wait.Until(ExpectedConditions.ElementToBeClickable(By.Name(name)));
             return _browser.FindElement(By.Name(name));
         }
 
         private IWebElement GetById(string id)
         {
-            _wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
+            _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(id)));
             return _browser.FindElement(By.Id(id));
         }
 
         private IWebElement GetByXPath(string xpath)
         {
-            _wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
+            _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
             return _browser.FindElement(By.XPath(xpath));
         }
 
