@@ -33,11 +33,11 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public FluentSeleniun PageTitleShouldBe(string text, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        public FluentSeleniun PageTitleShouldBe(string text)
         {
             _methods.Add(() =>
             {
-                if (!_browser.Title.Equals(text, stringComparison))
+                if (!_browser.Title.Equals(text, StringComparison.InvariantCultureIgnoreCase))
                     throw new Exception($"Page title should be {text}");
             });
 
