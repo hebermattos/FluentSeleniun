@@ -112,8 +112,7 @@ namespace OpenQA.Selenium
             _methods.Add(() =>
             {
                 var element = GetByName(name);
-                element.Clear();
-                element.SendKeys(value);
+                SendKeys(value, element);
             });
 
             return this;
@@ -124,8 +123,7 @@ namespace OpenQA.Selenium
             _methods.Add(() =>
             {
                 var element = GetById(id);
-                element.Clear();
-                element.SendKeys(value);
+                SendKeys(value, element);
             });
 
             return this;
@@ -136,11 +134,16 @@ namespace OpenQA.Selenium
             _methods.Add(() =>
             {
                 var element = GetByXPath(xpath);
-                element.Clear();
-                element.SendKeys(value);
+                SendKeys(value, element);
             });
 
             return this;
+        }
+
+        private static void SendKeys(string value, IWebElement element)
+        {
+            element.Clear();
+            element.SendKeys(value);
         }
 
         public FluentSelenium SelectDdlByName(string name, string value)
