@@ -7,16 +7,21 @@ namespace example.test
 
     public class UnitTest1
     {
-        [Fact]
-        public void Test1()
+        private FluentSelenium _seleniun;
+
+        public UnitTest1()
         {
-            var seleniun = new FluentSelenium(
+            _seleniun = new FluentSelenium(
                   browserType: SeleniumBrowserType.Chrome,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
                   maxWaitSeconds: 3);
+        }
 
-            seleniun
+        [Fact]
+        public void Test1()
+        {
+            _seleniun
                 .OpenUrl("https://www.google.com/")
                 .PageTitleShouldBe("Google")
                 .FillByName("q", "devops")
@@ -28,13 +33,7 @@ namespace example.test
         [Fact]
         public void Test2()
         {
-            var seleniun = new FluentSelenium(
-                  browserType: SeleniumBrowserType.Chrome,
-                  snapShotPath: "c:\\Selenium_SnapShots\\",
-                  driverFolderPath: Directory.GetCurrentDirectory(),
-                  maxWaitSeconds: 3);
-
-            seleniun
+            _seleniun
                 .OpenUrl("https://www.google.com/")
                 .PageTitleShouldBe("Google")
                 .FillByName("q", "github")
