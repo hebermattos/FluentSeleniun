@@ -15,7 +15,7 @@ namespace example.xunit
                   browserType: SeleniumBrowserType.Chrome,
                   snapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
-                  maxWaitSeconds: 30);
+                  maxWaitSeconds: 3);
         }
 
         [Fact]
