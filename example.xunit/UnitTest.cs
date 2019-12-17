@@ -13,7 +13,7 @@ namespace example.xunit
         {
             _seleniun = new FluentSelenium(
                   browserType: SeleniumBrowserType.Chrome,
-                  snapShotPath: "c:\\Selenium_SnapShots\\",
+                  errorSnapShotPath: "c:\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
                   maxWaitSeconds: 3);
         }

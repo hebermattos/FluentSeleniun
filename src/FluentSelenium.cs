@@ -11,15 +11,15 @@ namespace OpenQA.Selenium
     {
         private readonly IWebDriver _browser;
         private readonly WebDriverWait _wait;
-        private readonly string _snapShotPath;
+        private readonly string _errorSnapShotPath;
         private IList<Action> _methods;
 
-        public FluentSelenium(SeleniumBrowserType browserType, string snapShotPath, string driverFolderPath, int maxWaitSeconds)
+        public FluentSelenium(SeleniumBrowserType browserType, string errorSnapShotPath, string driverFolderPath, int maxWaitSeconds)
         {
             _browser = SeleniumBrowserFactory.Get(browserType, driverFolderPath);
             _wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(maxWaitSeconds));
             _wait.PollingInterval = TimeSpan.FromMilliseconds(100);
-            _snapShotPath = snapShotPath;
+            _errorSnapShotPath = errorSnapShotPath;
             _methods = new List<Action>();
         }
 
@@ -198,12 +198,12 @@ namespace OpenQA.Selenium
 
         private void SavePrint(Exception erro)
         {
-            Directory.CreateDirectory(_snapShotPath);
+            Directory.CreateDirectory(_errorSnapShotPath);
 
             var screnn = (ITakesScreenshot)_browser;
 
             Screenshot print = screnn.GetScreenshot();
-            print.SaveAsFile(_snapShotPath + RemoveSpecialCharacters(erro.Message.Replace(" ", "_")) + ".png", ScreenshotImageFormat.Png);
+            print.SaveAsFile(_errorSnapShotPath + RemoveSpecialCharacters(erro.Message.Replace(" ", "_")) + ".png", ScreenshotImageFormat.Png);
         }
 
         private static void SendKeys(string value, IWebElement element)

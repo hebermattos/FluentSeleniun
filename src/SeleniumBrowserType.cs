@@ -4,6 +4,9 @@
     {
         Chrome,
         Firefox,
-        InternetExplorer
+        InternetExplorer,
+        Opera,
+        Safari,
+        HtmlUnitDriver
     }
 }
