@@ -21,29 +21,25 @@ namespace example.xunit
         [Fact]
         public void Test1()
         {
-            var testResult = _seleniun
-                 .OpenUrl("https://www.google.com/")
-                 .PageTitleShouldBe("Google")
-                 .FillByName("q", "devops")
-                 .ClickButtonByName("btnK")
-                 .PageTitleShouldContains("devops")
-                 .Run();
-
-            Assert.True(testResult);
+            _seleniun
+                .OpenUrl("https://www.google.com/")
+                .PageTitleShouldBe("Google")
+                .FillByName("q", "devops")
+                .ClickButtonByName("btnK")
+                .PageTitleShouldContains("devops")
+                .Run();
         }
 
         [Fact]
         public void Test2()
         {
-            var testResult = _seleniun
+            _seleniun
                  .OpenUrl("https://www.google.com/")
                  .PageTitleShouldBe("Google")
                  .FillByName("q", "github")
                  .ClickButtonByName("btnK")
                  .PageTitleShouldContains("github")
                  .Run();
-
-            Assert.True(testResult);
         }
     }
 }

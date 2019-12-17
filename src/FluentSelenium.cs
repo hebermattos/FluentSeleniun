@@ -173,20 +173,18 @@ namespace OpenQA.Selenium
             return this;
         }
 
-        public bool Run()
+        public void Run()
         {
             try
             {
                 foreach (var method in _methods)
-                    method.Invoke();
-                
-                return true;
+                    method.Invoke();               
+          
             }
             catch (Exception ex)
             {
                 SavePrint(ex);
 
-                return false;
             }
             finally
             {
