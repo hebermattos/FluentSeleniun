@@ -4,7 +4,6 @@ using Xunit;
 
 namespace example.xunit
 {
-
     public class UnitTest
     {
         private FluentSelenium _seleniun;
@@ -13,7 +12,7 @@ namespace example.xunit
         {
             _seleniun = new FluentSelenium(
                   browserType: SeleniumBrowserType.Chrome,
-                  errorSnapShotPath: "c:\\Selenium_SnapShots\\",
+                  errorSnapShotPath: Directory.GetCurrentDirectory() + "\\Selenium_SnapShots\\",
                   driverFolderPath: Directory.GetCurrentDirectory(),
                   maxWaitSeconds: 3);
         }
@@ -22,24 +21,24 @@ namespace example.xunit
         public void Test1()
         {
             _seleniun
-                .OpenUrl("https://www.google.com/")
-                .PageTitleShouldBe("Google")
-                .FillByName("q", "devops")
-                .ClickButtonByName("btnK")
-                .PageTitleShouldContains("devops")
-                .Run();
+                 .OpenUrl("https://www.google.com/")
+                 .PageTitleShouldBe("Google")
+                 .FillByName("q", "devops")
+                 .ClickButtonByName("btnK")
+                 .PageTitleShouldContains("devops")
+                 .Run();
         }
 
         [Fact]
         public void Test2()
         {
             _seleniun
-                 .OpenUrl("https://www.google.com/")
-                 .PageTitleShouldBe("Google")
-                 .FillByName("q", "github")
-                 .ClickButtonByName("btnK")
-                 .PageTitleShouldContains("github")
-                 .Run();
+                  .OpenUrl("https://www.google.com/")
+                  .PageTitleShouldBe("Google")
+                  .FillByName("q", "github")
+                  .ClickButtonByName("btnK")
+                  .PageTitleShouldContains("asdasdgithubb")
+                  .Run();
         }
     }
 }
