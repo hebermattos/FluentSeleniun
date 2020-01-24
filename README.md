@@ -1,3 +1,5 @@
+https://ci.appveyor.com/api/projects/status/h62n3a1vadrnp56u?svg=true
+
 # seleniun
 simple selenium wrapper
 
