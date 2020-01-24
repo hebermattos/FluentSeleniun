@@ -18,7 +18,7 @@ namespace example.xunit
         }
 
         [Fact]
-        public void Test1()
+        public void google_search()
         {
             _seleniun
                  .OpenUrl("https://www.google.com/")
