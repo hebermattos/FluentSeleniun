@@ -1,4 +1,4 @@
-https://ci.appveyor.com/api/projects/status/h62n3a1vadrnp56u?svg=true
+[![Build status](https://ci.appveyor.com/api/projects/status/h62n3a1vadrnp56u?svg=true)](https://ci.appveyor.com/project/hebermattos/fluentseleniun)
 
 # seleniun
 simple selenium wrapper
