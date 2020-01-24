@@ -27,18 +27,6 @@ namespace example.xunit
                  .ClickButtonByName("btnK")
                  .PageTitleShouldContains("devops")
                  .Run();
-        }
-
-        [Fact]
-        public void Test2()
-        {
-            _seleniun
-                  .OpenUrl("https://www.google.com/")
-                  .PageTitleShouldBe("Google")
-                  .FillByName("q", "github")
-                  .ClickButtonByName("btnK")
-                  .PageTitleShouldContains("asdasdgithubb")
-                  .Run();
-        }
+        }  
     }
 }

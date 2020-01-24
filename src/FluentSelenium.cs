@@ -178,8 +178,7 @@ namespace OpenQA.Selenium
             try
             {
                 foreach (var method in _methods)
-                    method.Invoke();
-          
+                    method.Invoke();          
             }
             catch (Exception ex)
             {
